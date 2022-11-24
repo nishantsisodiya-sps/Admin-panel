@@ -1,0 +1,41 @@
+<button style="display:flex;" (click)="openDialog()" class="btn btn-success" id="ledger">Add Ledger
+</button>
+<div>
+    <table class="table table-bordered table-sm"  style="text-align:center;border:2px solid black ;">
+      <thead>
+        <tr>
+          <th scope="col">SR.No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Date
+          
+          </th>
+          
+          <th scope="col">Credit Amount (₹)
+          
+          </th>
+          <th scope="col">Debit Amount (₹)
+            
+          </th>
+          <th scope="col">Balance(₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of EmployeeData; let i = index">
+          <td>{{i+1}}</td>
+
+          <td>{{employee.employeeName}}</td>
+
+          <td>{{employee.employeeDate}} 
+          </td>
+
+          <td>{{employee.employeeCredit}} 
+          </td>
+
+          <td>{{employee.employeeDebit}}
+          </td>
+
+          <td>{{employee.employeeCredit - employee.employeeDebit}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

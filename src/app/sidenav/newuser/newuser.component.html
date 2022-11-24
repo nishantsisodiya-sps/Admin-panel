@@ -1,0 +1,155 @@
+<div class="container">
+  <div class="title">Add User</div>
+  <div class="content">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="user-details">
+
+
+
+        <div class="input-box" id="fname">
+          <span class="details">First Name</span>
+          <input formControlName="firstName" [(ngModel)]="userObj.userFname" type="text" placeholder="Enter your First name">
+          <small class="text-danger"
+            *ngIf="!registerForm.get('firstName').valid && registerForm.get('firstName').touched">*Please Enter First
+            Name</small>
+        </div>
+
+
+        <div class="input-box">
+          <span class="details">Last Name</span>
+          <input formControlName="lastName" [(ngModel)]="userObj.userLname" type="text" placeholder="Enter your Last Name" required>
+          <small class="text-danger"
+            *ngIf="!registerForm.get('lastName').valid && registerForm.get('lastName').touched">*Please Enter Last
+            Name</small>
+        </div>
+
+
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input formControlName="email" [(ngModel)]="userObj.userEmail" type="email" placeholder="Enter your email" >
+          <small class="text-danger"
+            *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">*Please Enter Valid
+            Email</small>
+        </div>
+
+
+        <div class="input-box">
+          <span class="details">Phone Number</span>
+          <input formControlName="phone" [(ngModel)]="userObj.userPhone" type="number" placeholder="Enter your number" required>
+          <small class="text-danger"
+            *ngIf="!registerForm.get('phone').valid && registerForm.get('phone').touched">*Please Enter valid
+            Number</small>
+        </div>
+
+
+        <div class="input-box">
+          <span class="details">Age</span>
+          <input formControlName="age" type="number" [(ngModel)]="userObj.userAge" placeholder="Enter your Age" required>
+          <small class="text-danger" *ngIf="!registerForm.get('age').valid && registerForm.get('age').touched">*Please
+            Enter Age between 18-60</small>
+        </div>
+
+
+        <div class="input-box">
+          <span class="details">Date of Joining</span>
+          <input formControlName="doj" type="date" [(ngModel)]="userObj.userJoining" required>
+          <small class="text-danger" *ngIf="!registerForm.get('doj').valid && registerForm.get('doj').touched">*Please
+            Enter your Joining Date</small>
+        </div>
+
+        <mat-form-field appearance="fill" class="input-box">
+          <mat-label>Designation</mat-label>
+          <mat-select formControlName="designation" [(ngModel)]="userObj.userDesignation">
+            <mat-option *ngFor="let job of Designation" [value]="job.value">
+              {{job.viewValue}}
+            </mat-option>
+          </mat-select>
+          <small class="text-danger"
+            *ngIf="!registerForm.get('designation').valid && registerForm.get('designation').touched">*Please Select
+            your Designation</small>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill" class="input-box">
+          <mat-label>Technology</mat-label>
+          <mat-select formControlName="technology" [(ngModel)]="userObj.userTechnology" >
+            <mat-option *ngFor="let tech of Technology" [value]="tech.value">
+              {{tech.viewValue}}
+            </mat-option>
+          </mat-select>
+          <small class="text-danger"
+            *ngIf="!registerForm.get('technology').valid && registerForm.get('technology').touched">*Please Select your
+            Technology</small>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="input-box">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender" [(ngModel)]="userObj.userGender">
+            <mat-option *ngFor="let gender of gender" [value]="gender.value">
+              {{gender.viewValue}}
+            </mat-option>
+          </mat-select>
+          <small class="text-danger"
+          *ngIf="!registerForm.get('gender').valid && registerForm.get('gender').touched">*Please Select
+          your Gender</small>
+        </mat-form-field>
+      </div>
+
+
+        <p class="check"><input formControlName="terms" id="checkbox_id" type="checkbox" required>&nbsp; <label
+            for="checkbox_id"> I Agree to the <a
+              href="https://www.termsandconditionsgenerator.com/live.php?token=qt0Vpir0fC7HDNY2eGysf1fF8WNoVWfN">Terms
+              and Conditions.</a></label></p>
+        <small class="text-danger" *ngIf="!registerForm.get('terms').valid && registerForm.get('terms').touched">*Please
+          Click on Checkbox to confirm</small>
+
+
+      <div class="button">
+        <input type="submit" value="Register">
+      </div>
+    </form>
+  </div>
+
+  <p>
+    <mat-toolbar class="usertool" color="primary">
+      <span style="font-size: larger ;">Users Details</span>
+    </mat-toolbar>
+  </p>
+
+
+  <div>
+    <table class="table table-bordered table-sm" style="border:2px solid black ;">
+      <thead>
+        <tr style="text-align:center ;">
+          <th scope="col">Sr.no</th>
+          <th scope="col">FirstName</th>
+          <th scope="col">Last name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone no.</th>
+          <th scope="col">Joining</th>
+          <th scope="col">Designation</th>
+          <th scope="col">Technology</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="text-align: center;" *ngFor="let user of userList; let i= index">
+          <td>{{i+1}}</td>
+          <td>{{user.userFname}}</td>
+          <td>{{user.userLname}}</td>
+          <td>{{user.userEmail}}</td>
+          <td>{{user.userPhone}}</td>
+          <td>{{user.userAge}}</td>
+          <td>{{user.userDesignation}}</td>
+          <td>{{user.userTechnology}}</td>
+          <td>{{user.userGender}}</td>
+          <td>
+           <button class="btn btn-danger" (click)="dltData(user.userId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

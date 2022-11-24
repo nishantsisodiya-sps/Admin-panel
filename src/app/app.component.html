@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
+  </button>
+  <span class="nion">NION</span>
+
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="sidebar">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home">Home</a>
+      <a mat-list-item routerLink="/map">Map</a>
+      <a mat-list-item routerLink="/newuser">New users</a>
+      <a mat-list-item routerLink="/users">Existing Users</a>
+      <a mat-list-item routerLink="/employee">Employee</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh;">
+      <router-outlet>
+      </router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

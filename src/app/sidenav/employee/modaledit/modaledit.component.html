@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="title">Employee Ledger</div>
+    <div class="content">
+      <form [formGroup]="registerForm">
+        <div class="user-details">
+  
+  
+          <div class="input-box">
+            <span class="details">Date</span>
+            <input formControlName="Newdate" type="date" placeholder="Enter Date" required>
+            <small class="text-danger"
+              *ngIf="!registerForm.get('Newdate').valid && registerForm.get('Newdate').touched">*Please Enter Last
+              Name</small>
+          </div>
+  
+  
+          <div class="input-box">
+            <span class="details">Credit Amount(₹)</span>
+            <input formControlName="Newcredit" type="number"  placeholder="Enter Credit Amount">
+            <small class="text-danger"
+              *ngIf="!registerForm.get('Newcredit').valid && registerForm.get('Newcredit').touched">*Please Enter Credit Amount</small>
+          </div>
+  
+  
+          <div class="input-box">
+            <span class="details">Debit Amount(₹)</span>
+            <input formControlName="Newdebit" type="number" placeholder="Enter Debit Amount">
+            <small class="text-danger"
+              *ngIf="!registerForm.get('Newdebit').valid && registerForm.get('Newdebit').touched">*Please Enter Debit Amount</small>
+          </div>
+        </div>
+  
+        <div class="button">
+          <input type="submit" (click)="onUpdate()" value="Update">
+        </div>

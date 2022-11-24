@@ -1,0 +1,31 @@
+.homeback{
+  height: 95%;
+  width: 100%;
+  background-color:#37517e;
+  color: white;
+}
+.line{
+  padding: 3%;
+  position: relative;
+  top: 70px;
+
+}
+p{
+  font-size: 3.5em;
+  font-family: "Jost", sans-serif;
+  font-weight: bolder;
+}
+h2{
+  font-size: 2.5em;
+}
+.image{
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  bottom: 220px;
+}
+.footer{
+  text-align: center;
+  font-weight: bold;
+  font-size : bolder;
+}

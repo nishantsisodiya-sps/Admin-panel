@@ -1,0 +1,47 @@
+
+<div class="container" [hidden]="IsmodelShow">
+  <p>
+    <mat-toolbar color="primary" >
+      <span>Employee ledger</span>
+      <button id="ledger" class="btn-close" mat-dialog-close ></button>
+      
+</mat-toolbar  >
+</p>
+    <div class="content"  >
+      <form [formGroup]="registerForm">
+        <div class="user-details">
+  
+          <div class="input-box" id="fname">
+            <span class="details">Name</span>
+            <input formControlName="Name" type="text" [(ngModel)]="modalObj.employeeName" placeholder="Enter your Name">
+            <small class="text-danger"
+              *ngIf="!registerForm.get('Name').valid && registerForm.get('Name').touched">*Please Enter
+              Name</small>
+          </div>
+  
+  
+          <div class="input-box">
+            <span class="details">Date</span>
+            <input formControlName="date" type="date" [(ngModel)]="modalObj.employeeDate" placeholder="Enter Date" required>
+            <small class="text-danger"
+              *ngIf="!registerForm.get('date').valid && registerForm.get('date').touched">*Please Enter Last
+              Name</small>
+          </div>
+  
+  
+          <div class="input-box">
+            <span class="details">Credit Amount(₹)</span>
+            <input formControlName="credit" type="number" [(ngModel)]="modalObj.employeeCredit" placeholder="Enter Credit Amount">
+            
+          </div>
+  
+  
+          <div class="input-box">
+            <span class="details">Debit Amount(₹)</span>
+            <input formControlName="debit" type="number" [(ngModel)]="modalObj.employeeDebit" placeholder="Enter Debit Amount">
+          </div>
+        </div>
+  
+        <div class="button">
+          <input type="submit" (click)="saveData()"  value="Add">
+        </div>
